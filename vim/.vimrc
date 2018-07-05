@@ -20,6 +20,8 @@ colorscheme gruvbox
 set colorcolumn=80
 " line number
 set number
+" set mouse modes to all. (copy text of a terminal without linenumber)
+set mouse=a
 
 set history=100
 " a buffer will not be closed -> hidden
@@ -45,6 +47,7 @@ set ic
 
 " nerdtree
 let NERDTreeShowHidden=1
+let mapleader = '-'
 nmap <leader>n :NERDTreeToggle<CR>
 
 
