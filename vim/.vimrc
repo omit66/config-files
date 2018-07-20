@@ -25,7 +25,7 @@ set mouse=a
 
 set history=100
 " a buffer will not be closed -> hidden
-set hidden
+" set hidden
 
 " indent rules for for the filetype
 " located in indent folder
@@ -43,6 +43,8 @@ set hlsearch
 set incsearch
 " ignore case (use \C für case sensitiv)
 set ic
+" read files automatically (refresh)
+set autoread
 
 
 " nerdtree
