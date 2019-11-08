@@ -45,6 +45,8 @@ set incsearch
 set ic
 " read files automatically (refresh)
 set autoread
+" change dir to current file"
+set autodir
 
 
 " nerdtree
