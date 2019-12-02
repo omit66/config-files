@@ -58,3 +58,7 @@ nmap <leader>n :NERDTreeToggle<CR>
 autocmd BufWritePost *.py call Flake8()
 " expand tabs to spaces
 autocmd BufWritePre * :retab
+
+set backupdir=.backup/,~/.backup/,/tmp//, $TEMP\\, $TMP\\
+set directory=.swp/,~/.swp/,/tmp//, $TEMP\\, $TMP\\
+set undodir=.undo/,~/.undo/,/tmp//, $TEMP\\, $TMP\\
