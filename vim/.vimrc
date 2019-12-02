@@ -59,6 +59,12 @@ autocmd BufWritePost *.py call Flake8()
 " expand tabs to spaces
 autocmd BufWritePre * :retab
 
-set backupdir=.backup/,~/.backup/,/tmp//, $TEMP\\, $TMP\\
-set directory=.swp/,~/.swp/,/tmp//, $TEMP\\, $TMP\\
-set undodir=.undo/,~/.undo/,/tmp//, $TEMP\\, $TMP\\
+set backupdir=.backup/,~/.backup/,/tmp//
+set directory=.swp/,~/.swp/,/tmp//
+set undodir=.undo/,~/.undo/,/tmp//
+
+if has("win32") || has("win64")
+    set backupdir=C:\temp\\, $HOME\\,. " backup files
+    set directory=C:\temp\\, $TEMP\\,. " swap filescurrent dir
+    set undodir=C:\temp\\, $HOME\\,. " undo files
+endif
