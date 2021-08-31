@@ -1,15 +1,13 @@
 [user]
     name = Timo Stüber
-    email = tsueber@uni-bremen.de
+	email = omit66@gmail.com
     username = omit66
-
-[branch]
-    autosetuprebase = always
 
 [core]
     editor = vim
     autocrlf = input
     whitespace = fix,-indent-with-non-tab,trailing-space,cr-at-eol, blank-at-eof
+        excludesfile = /home/jules/.gitignore
 
 [push]
         default = simple

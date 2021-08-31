@@ -29,3 +29,8 @@
 *.log
 *.sql
 *.sqlite
+
+# latex
+*.out
+*.log
+*.aux
