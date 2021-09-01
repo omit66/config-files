@@ -1,25 +1,54 @@
-call plug#begin()
-
-" On-demand loading"
-Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
-
-" gruvbox theme
-Plug 'morhetz/gruvbox'
-
-Plug 'nvie/vim-flake8'
-
-call plug#end()
-
+" REQUIRES VIM 8
+" minpac package manager
+packadd minpac
+call minpac#init({'progress_open': 'none', 'status_auto': 'FALSE'})
+" solarized theme
+call minpac#add('altercation/vim-colors-solarized')
+" file tree
+call minpac#add('preservim/nerdtree')
+" update minpac
+call minpac#add('k-takata/minpac', {'type': 'opt'})
+" fancy status bar
+call minpac#add('vim-airline/vim-airline')
+" show git diff symbols in the gutter
+call minpac#add('airblade/vim-gitgutter')
+" terminal directly in vim
+call minpac#add('voldikss/vim-floaterm')
+" completion + indexing project
+"call minpac#add('tabnine/YouCompleteMe')
+" linting
+call minpac#add('dense-analysis/ale')
+" syntax checking
+call minpac#add('vim-syntastic/syntastic')
+" rainbow brackets
+call minpac#add('frazrepo/vim-rainbow')
+call minpac#update()
+" create tags for the documentation (silent permission denied)
+silent! helptags ALL
 
 " highlighting for filetypes
 filetype on
-syntax on
-" theme
-colorscheme gruvbox
+
+" solarized theme
+syntax enable
+set background=light
+let g:solarized_termcolors=256
+"let g:solarized_termcolors= 16 | 256
+let g:solarized_termtrans = 0
+let g:solarized_degrade = 0 | 1
+let g:solarized_bold = 1 | 0
+let g:solarized_underline = 1 | 0
+let g:solarized_italic = 1 | 0
+let g:solarized_contrast = "normal"| "high" or "low"
+let g:solarized_visibility= "normal"| "high" or "low"
+colorscheme solarized
+
 " 80 chars -> line breaks
 set colorcolumn=80
+
 " line number
 set number
+
 " set mouse modes to all. (copy text of a terminal without linenumber)
 set mouse=a
 
@@ -30,6 +59,7 @@ set history=100
 " indent rules for for the filetype
 " located in indent folder
 filetype plugin indent on
+
 " use space instead of tabs
 set expandtab
 set shiftwidth=4
@@ -51,11 +81,9 @@ set autochdir
 
 " nerdtree
 let NERDTreeShowHidden=1
-let mapleader = '-'
-nmap <leader>n :NERDTreeToggle<CR>
+map <F5> :NERDTreeToggle<CR>
 
 
-autocmd BufWritePost *.py call Flake8()
 " expand tabs to spaces
 autocmd BufWritePre * :retab
 
@@ -68,3 +96,25 @@ if has("win32") || has("win64")
     set directory=C:\temp\\, $TEMP\\,. " swap filescurrent dir
     set undodir=C:\temp\\, $HOME\\,. " undo files
 endif
+
+
+" airline
+" - icons
+let g:airline_powerline_fonts=1
+" - show all tabs, buffers
+let g:airline#extensions#tabline#enabled=1
+
+" floaterm
+let g:floaterm_keymap_toggle = '<F12>'
+
+" synstatic
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+
+" rainbow brackets
+let g:rainbow_active = 1
