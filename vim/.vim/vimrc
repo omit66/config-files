@@ -41,6 +41,12 @@ let g:solarized_underline = 1 | 0
 let g:solarized_italic = 1 | 0
 let g:solarized_contrast = "normal"| "high" or "low"
 let g:solarized_visibility= "normal"| "high" or "low"
+
+if has("win32") || has("win64")
+    let g:solarized_termcolors= 16 | 256
+    let g:solarized_termtrans = 0 | 1
+endif
+
 colorscheme solarized
 
 " 80 chars -> line breaks
@@ -92,9 +98,9 @@ set directory=.swp/,~/.swp/,/tmp//
 set undodir=.undo/,~/.undo/,/tmp//
 
 if has("win32") || has("win64")
-    set backupdir=C:\temp\\, $HOME\\,. " backup files
-    set directory=C:\temp\\, $TEMP\\,. " swap filescurrent dir
-    set undodir=C:\temp\\, $HOME\\,. " undo files
+    set backupdir=$TEMP,$TMP,. " backup files
+    set directory=$TEMP,$TMP,. " swap filescurrent dir
+    set undodir=$TEMP,$TMP,. " undo files
 endif
 
 
