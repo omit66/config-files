@@ -33,7 +33,6 @@ filetype on
 syntax enable
 set background=light
 let g:solarized_termcolors=256
-"let g:solarized_termcolors= 16 | 256
 let g:solarized_termtrans = 0
 let g:solarized_degrade = 0 | 1
 let g:solarized_bold = 1 | 0
@@ -42,12 +41,7 @@ let g:solarized_italic = 1 | 0
 let g:solarized_contrast = "normal"| "high" or "low"
 let g:solarized_visibility= "normal"| "high" or "low"
 
-if has("win32") || has("win64")
-    let g:solarized_termcolors= 16 | 256
-    let g:solarized_termtrans = 0 | 1
-endif
 
-colorscheme solarized
 
 " 80 chars -> line breaks
 set colorcolumn=80
@@ -83,7 +77,7 @@ set ic
 set autoread
 " change dir to current file"
 set autochdir
-
+set backspace=indent,eol,start
 
 " nerdtree
 let NERDTreeShowHidden=1
@@ -101,8 +95,18 @@ if has("win32") || has("win64")
     set backupdir=$TEMP,$TMP,. " backup files
     set directory=$TEMP,$TMP,. " swap filescurrent dir
     set undodir=$TEMP,$TMP,. " undo files
+    let g:solarized_termcolors= 16
+    let g:solarized_termtrans = 1
+    set background=dark
 endif
-
+if has("gui_running")
+    if has("gui_win32")
+        set guifont=Consolas:h11:cANSI
+        let g:solarized_termcolors= 256
+        let g:solarized_termtrans = 1
+        set background=light
+    endif
+endif
 
 " airline
 " - icons
@@ -124,3 +128,6 @@ let g:syntastic_check_on_wq = 0
 
 " rainbow brackets
 let g:rainbow_active = 1
+
+
+colorscheme solarized
