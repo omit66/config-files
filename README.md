@@ -42,6 +42,8 @@ Create a symbolic link:
 ln -s config-files/vim/.vim ~/.vim
 ```
 
+## YouCompleteMe
 
-
-
+This plugin needs some extra work to be installed...
+See https://github.com/tabnine/YouCompleteMe
+This ist nice! Wow, hier fehlt ein Komma! A das geht.
