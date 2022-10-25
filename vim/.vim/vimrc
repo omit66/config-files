@@ -15,7 +15,9 @@ call minpac#add('airblade/vim-gitgutter')
 " terminal directly in vim
 call minpac#add('voldikss/vim-floaterm')
 " completion + indexing project
-call minpac#add('ymc-core/YouCompleteMe')
+" this have to be compiles + installed first
+" call minpac#add('ymc-core/YouCompleteMe')
+" call minpac#add('tabnine/YouCompleteMe')
 " linting
 call minpac#add('dense-analysis/ale')
 " syntax checking
@@ -40,7 +42,6 @@ let g:solarized_underline = 1 | 0
 let g:solarized_italic = 1 | 0
 let g:solarized_contrast = "normal"| "high" or "low"
 let g:solarized_visibility= "normal"| "high" or "low"
-
 
 
 " 80 chars -> line breaks
@@ -132,5 +133,27 @@ let g:syntastic_check_on_wq = 0
 " rainbow brackets
 let g:rainbow_active = 1
 
+" ale
+let g:ale_languagetool_executable='/usr/bin/languagetool'
+let g:ale_languagetool_options='-l en-US -c UTF-8  '
+let g:ale_linter_aliases = {'pandoc': ['markdown']}
+let g:ale_linters = {'markdown': ['languagetool']}
+let g:ale_list_vertical = 0
+let g:ale_list_window_size = 100
+let g:ale_loclist_msg_format = '%code: %%s'
+let g:ale_echo_msg_format = '%code: %%s %%text %%detail'
+let g:ale_cursor_detail = 0
+let g:ale_echo_cursor = 1
+let g:ale_virtualtext_cursor = 1
 
 colorscheme solarized
+
+" Let's save this damn undo infos!
+if !isdirectory($HOME."/.vim")
+    call mkdir($HOME."/.vim", "", 0770)
+endif
+if !isdirectory($HOME."/.vim/undo-dir")
+    call mkdir($HOME."/.vim/undo-dir", "", 0700)
+endif
+set undodir=~/.vim/undo-dir
+set undofile
